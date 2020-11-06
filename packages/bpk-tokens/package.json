@@ -1,22 +1,22 @@
 {
   "name": "bpk-tokens",
-  "version": "32.0.5",
+  "version": "36.0.1",
   "description": "Backpack design tokens for colors, spacing, font, etc.",
-  "main": "index.js",
-  "scripts": {
-    "tokens": "gulp"
-  },
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:Skyscanner/backpack.git"
   },
   "author": "Backpack Design System <backpack@skyscanner.net>",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "color": "^3.0.0"
-  },
+  "main": "index.js",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "gitHead": "dbae1565c67af16720e129e9b4b70c8e38d80ceb"
+  "scripts": {
+    "tokens": "gulp"
+  },
+  "gitHead": "a6910b1b5068590c7ba3691bedeb5818160cc477",
+  "dependencies": {
+    "color": "^3.0.0"
+  }
 }

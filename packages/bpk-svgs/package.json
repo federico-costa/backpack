@@ -1,22 +1,22 @@
 {
   "name": "bpk-svgs",
-  "version": "11.2.0",
+  "version": "12.1.18",
   "description": "Backpack's library of SVG's.",
-  "main": "_index.scss",
-  "scripts": {
-    "svgs": "gulp clean && gulp"
-  },
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:Skyscanner/backpack.git"
   },
   "author": "Backpack Design System <backpack@skyscanner.net>",
-  "license": "Apache-2.0",
-  "devDependencies": {
-    "bpk-tokens": "^32.0.5"
-  },
+  "main": "_index.scss",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "gitHead": "ace52722a3d752ef1fed43eab155666d232ce21d"
+  "scripts": {
+    "svgs": "gulp clean && gulp"
+  },
+  "gitHead": "a6910b1b5068590c7ba3691bedeb5818160cc477",
+  "devDependencies": {
+    "bpk-tokens": "^36.0.1"
+  }
 }

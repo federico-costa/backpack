@@ -9,8 +9,6 @@ exports[`BpkNudger should render as a configurable nudger correctly 1`] = `
     className="bpk-button bpk-button--icon-only bpk-button--secondary bpk-nudger__button"
     disabled={false}
     onClick={[Function]}
-    outline={false}
-    secondary={true}
     title="Decrease"
     type="button"
   >
@@ -38,7 +36,7 @@ exports[`BpkNudger should render as a configurable nudger correctly 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M1.5 12A1.5 1.5 0 0 1 3 10.5h18a1.5 1.5 0 1 1 0 3H3A1.5 1.5 0 0 1 1.5 12z"
+          d="M1.5 12A1.5 1.5 0 0 1 3 10.5h18a1.5 1.5 0 0 1 0 3H3A1.5 1.5 0 0 1 1.5 12z"
         />
       </svg>
     </span>
@@ -56,8 +54,6 @@ exports[`BpkNudger should render as a configurable nudger correctly 1`] = `
     className="bpk-button bpk-button--icon-only bpk-button--secondary bpk-nudger__button"
     disabled={false}
     onClick={[Function]}
-    outline={false}
-    secondary={true}
     title="Increase"
     type="button"
   >
@@ -102,8 +98,6 @@ exports[`BpkNudger should render as an outline nudger correctly 1`] = `
     className="bpk-button bpk-button--icon-only bpk-button--outline bpk-nudger__button"
     disabled={false}
     onClick={[Function]}
-    outline={true}
-    secondary={false}
     title="Decrease"
     type="button"
   >
@@ -131,7 +125,7 @@ exports[`BpkNudger should render as an outline nudger correctly 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M1.5 12A1.5 1.5 0 0 1 3 10.5h18a1.5 1.5 0 1 1 0 3H3A1.5 1.5 0 0 1 1.5 12z"
+          d="M1.5 12A1.5 1.5 0 0 1 3 10.5h18a1.5 1.5 0 0 1 0 3H3A1.5 1.5 0 0 1 1.5 12z"
         />
       </svg>
     </span>
@@ -149,8 +143,6 @@ exports[`BpkNudger should render as an outline nudger correctly 1`] = `
     className="bpk-button bpk-button--icon-only bpk-button--outline bpk-nudger__button"
     disabled={false}
     onClick={[Function]}
-    outline={true}
-    secondary={false}
     title="Increase"
     type="button"
   >
@@ -195,8 +187,6 @@ exports[`BpkNudger should render correctly 1`] = `
     className="bpk-button bpk-button--icon-only bpk-button--secondary bpk-nudger__button"
     disabled={false}
     onClick={[Function]}
-    outline={false}
-    secondary={true}
     title="Decrease"
     type="button"
   >
@@ -224,7 +214,7 @@ exports[`BpkNudger should render correctly 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M1.5 12A1.5 1.5 0 0 1 3 10.5h18a1.5 1.5 0 1 1 0 3H3A1.5 1.5 0 0 1 1.5 12z"
+          d="M1.5 12A1.5 1.5 0 0 1 3 10.5h18a1.5 1.5 0 0 1 0 3H3A1.5 1.5 0 0 1 1.5 12z"
         />
       </svg>
     </span>
@@ -242,8 +232,6 @@ exports[`BpkNudger should render correctly 1`] = `
     className="bpk-button bpk-button--icon-only bpk-button--secondary bpk-nudger__button"
     disabled={false}
     onClick={[Function]}
-    outline={false}
-    secondary={true}
     title="Increase"
     type="button"
   >
@@ -288,8 +276,6 @@ exports[`BpkNudger should render correctly with a "className" attribute 1`] = `
     className="bpk-button bpk-button--icon-only bpk-button--secondary bpk-nudger__button"
     disabled={false}
     onClick={[Function]}
-    outline={false}
-    secondary={true}
     title="Decrease"
     type="button"
   >
@@ -317,7 +303,7 @@ exports[`BpkNudger should render correctly with a "className" attribute 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M1.5 12A1.5 1.5 0 0 1 3 10.5h18a1.5 1.5 0 1 1 0 3H3A1.5 1.5 0 0 1 1.5 12z"
+          d="M1.5 12A1.5 1.5 0 0 1 3 10.5h18a1.5 1.5 0 0 1 0 3H3A1.5 1.5 0 0 1 1.5 12z"
         />
       </svg>
     </span>
@@ -335,8 +321,6 @@ exports[`BpkNudger should render correctly with a "className" attribute 1`] = `
     className="bpk-button bpk-button--icon-only bpk-button--secondary bpk-nudger__button"
     disabled={false}
     onClick={[Function]}
-    outline={false}
-    secondary={true}
     title="Increase"
     type="button"
   >
@@ -381,8 +365,6 @@ exports[`BpkNudger should render correctly with a value < min 1`] = `
     className="bpk-button bpk-button--icon-only bpk-button--secondary bpk-nudger__button"
     disabled={true}
     onClick={[Function]}
-    outline={false}
-    secondary={true}
     title="Decrease"
     type="button"
   >
@@ -410,7 +392,7 @@ exports[`BpkNudger should render correctly with a value < min 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M1.5 12A1.5 1.5 0 0 1 3 10.5h18a1.5 1.5 0 1 1 0 3H3A1.5 1.5 0 0 1 1.5 12z"
+          d="M1.5 12A1.5 1.5 0 0 1 3 10.5h18a1.5 1.5 0 0 1 0 3H3A1.5 1.5 0 0 1 1.5 12z"
         />
       </svg>
     </span>
@@ -428,8 +410,6 @@ exports[`BpkNudger should render correctly with a value < min 1`] = `
     className="bpk-button bpk-button--icon-only bpk-button--secondary bpk-nudger__button"
     disabled={false}
     onClick={[Function]}
-    outline={false}
-    secondary={true}
     title="Increase"
     type="button"
   >
@@ -474,8 +454,6 @@ exports[`BpkNudger should render correctly with a value = max 1`] = `
     className="bpk-button bpk-button--icon-only bpk-button--secondary bpk-nudger__button"
     disabled={false}
     onClick={[Function]}
-    outline={false}
-    secondary={true}
     title="Decrease"
     type="button"
   >
@@ -503,7 +481,7 @@ exports[`BpkNudger should render correctly with a value = max 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M1.5 12A1.5 1.5 0 0 1 3 10.5h18a1.5 1.5 0 1 1 0 3H3A1.5 1.5 0 0 1 1.5 12z"
+          d="M1.5 12A1.5 1.5 0 0 1 3 10.5h18a1.5 1.5 0 0 1 0 3H3A1.5 1.5 0 0 1 1.5 12z"
         />
       </svg>
     </span>
@@ -521,8 +499,6 @@ exports[`BpkNudger should render correctly with a value = max 1`] = `
     className="bpk-button bpk-button--icon-only bpk-button--secondary bpk-nudger__button"
     disabled={true}
     onClick={[Function]}
-    outline={false}
-    secondary={true}
     title="Increase"
     type="button"
   >
@@ -567,8 +543,6 @@ exports[`BpkNudger should render correctly with a value = min 1`] = `
     className="bpk-button bpk-button--icon-only bpk-button--secondary bpk-nudger__button"
     disabled={true}
     onClick={[Function]}
-    outline={false}
-    secondary={true}
     title="Decrease"
     type="button"
   >
@@ -596,7 +570,7 @@ exports[`BpkNudger should render correctly with a value = min 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M1.5 12A1.5 1.5 0 0 1 3 10.5h18a1.5 1.5 0 1 1 0 3H3A1.5 1.5 0 0 1 1.5 12z"
+          d="M1.5 12A1.5 1.5 0 0 1 3 10.5h18a1.5 1.5 0 0 1 0 3H3A1.5 1.5 0 0 1 1.5 12z"
         />
       </svg>
     </span>
@@ -614,8 +588,6 @@ exports[`BpkNudger should render correctly with a value = min 1`] = `
     className="bpk-button bpk-button--icon-only bpk-button--secondary bpk-nudger__button"
     disabled={false}
     onClick={[Function]}
-    outline={false}
-    secondary={true}
     title="Increase"
     type="button"
   >
@@ -660,8 +632,6 @@ exports[`BpkNudger should render correctly with a value > max 1`] = `
     className="bpk-button bpk-button--icon-only bpk-button--secondary bpk-nudger__button"
     disabled={false}
     onClick={[Function]}
-    outline={false}
-    secondary={true}
     title="Decrease"
     type="button"
   >
@@ -689,7 +659,7 @@ exports[`BpkNudger should render correctly with a value > max 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M1.5 12A1.5 1.5 0 0 1 3 10.5h18a1.5 1.5 0 1 1 0 3H3A1.5 1.5 0 0 1 1.5 12z"
+          d="M1.5 12A1.5 1.5 0 0 1 3 10.5h18a1.5 1.5 0 0 1 0 3H3A1.5 1.5 0 0 1 1.5 12z"
         />
       </svg>
     </span>
@@ -707,8 +677,6 @@ exports[`BpkNudger should render correctly with a value > max 1`] = `
     className="bpk-button bpk-button--icon-only bpk-button--secondary bpk-nudger__button"
     disabled={true}
     onClick={[Function]}
-    outline={false}
-    secondary={true}
     title="Increase"
     type="button"
   >

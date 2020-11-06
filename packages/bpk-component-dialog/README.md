@@ -76,12 +76,20 @@ class App extends Component {
 | closeLabel            | string   | false    | null             |
 | renderTarget          | func     | false    | null             |
 | dismissible           | bool     | false    | true             |
+| headerIcon            | node     | false    | null             |
+| headerIconType        | oneOf(HEADER_ICON_TYPES.primary, HEADER_ICON_TYPES.warning, HEADER_ICON_TYPES.destructive) | false    | HEADER_ICON_TYPES.primary |
+| flare                 | bool     | false    | false            |
+| flareClassName        | string   | false    | null             |
 
 ### Prop Details
 
 #### onClose
 
 This is required unless `dismissible` is false.
+
+#### flareClassName
+
+This will change the style of the default flare view. Should you wish to apply an image to the flare you would pass the image using the CSS property `background-image`.
 
 ## Theme Props
 

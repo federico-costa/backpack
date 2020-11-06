@@ -43,8 +43,8 @@ import {
   themeAttributes as linkThemeAttributes,
 } from '../packages/bpk-component-link';
 import {
-  primaryMarkerThemeAttributes,
-  secondaryMarkerThemeAttributes,
+  defaultIconMarkerThemeAttributes,
+  priceMarkerThemeAttributes,
 } from '../packages/bpk-component-map';
 import { themeAttributes as modalThemeAttributes } from '../packages/bpk-component-modal';
 import { themeAttributes as nudgerThemeAttributes } from '../packages/bpk-component-nudger';
@@ -98,7 +98,7 @@ export default [
   ...switchThemeAttributes,
   ...textareaThemeAttributes,
   ...navigationBarThemeAttributes,
-  ...primaryMarkerThemeAttributes,
-  ...secondaryMarkerThemeAttributes,
+  ...defaultIconMarkerThemeAttributes,
+  ...priceMarkerThemeAttributes,
   ...storybookAttributes,
 ];

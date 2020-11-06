@@ -21,8 +21,8 @@ import {
   horizontalNavLinkActiveColor,
   calendarDayHoverColor,
   calendarDayActiveColor,
-  colorSkyGrayTint06,
   colorSkyGrayTint02,
+  colorSkyGrayTint06,
   colorWhite,
   colorMonteverde,
 } from 'bpk-tokens/tokens/base.es6';
@@ -162,12 +162,25 @@ const generateTheme = ({
   radioCheckedColor: primaryColor700,
   switchCheckedColor: primaryColor700,
 
+  ratingHighTextColor: 'black',
   ratingHighColor: primaryColor500,
+  ratingMediumTextColor: colorWhite,
   ratingMediumColor: secondaryColor500,
   ratingLowColor: colorSkyGrayTint02,
 
-  mapMarkerPrimaryBackgroundColor: primaryColor700,
-  mapMarkerSecondaryBackgroundColor: secondaryColor700,
+  iconMarkerDefaultBackgroundColor: primaryColor500,
+  iconMarkerDefaultSelectedColor: primaryColor500,
+  iconMarkerDefaultDisabledColor: primaryColor700,
+  iconMarkerDefaultDisabledBackgroundColor: primaryColor300,
+
+  priceMarkerBackgroundColor: primaryColor700,
+
+  priceMarkerSelectedBorderColor: primaryColor700,
+  priceMarkerSelectedColor: primaryColor700,
+
+  priceMarkerViewedBackgroundColor: primaryColor300,
+  priceMarkerViewedBorderColor: primaryColor300,
+  priceMarkerViewedColor: colorWhite,
 
   navigationBarIconButtonColor: colorWhite,
   navigationBarIconButtonHoverColor: colorWhite,

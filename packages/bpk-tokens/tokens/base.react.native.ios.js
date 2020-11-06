@@ -70,11 +70,16 @@ export const backgroundTertiaryColor = {
 export const backgroundTertiaryDarkColor = "rgb(44, 44, 46)";
 export const backgroundTertiaryLightColor = "rgb(255, 255, 255)";
 export const borderRadiusLg = 24;
+export const borderRadiusMd = 12;
 export const borderRadiusPill = 40;
-export const borderRadiusSm = 4;
+export const borderRadiusSm = 8;
+export const borderRadiusXs = 4;
 export const borderSizeLg = 2;
 export const borderSizeSm = 1;
 export const borderSizeXl = 3;
+export const borderWidthLg = 2;
+export const borderWidthSm = 1;
+export const borderWidthXl = 3;
 export const buttonBorderWidth = 2;
 export const buttonHeight = 32;
 export const buttonLineHeightLarge = 4 * 12;
@@ -124,6 +129,11 @@ export const colorSystemRed = "rgb(209, 67, 91)";
 export const colorTochigi = "rgb(225, 221, 236)";
 export const colorValensole = "rgb(165, 155, 200)";
 export const colorWhite = "rgb(255, 255, 255)";
+export const cornerRadiusLg = 24;
+export const cornerRadiusMd = 12;
+export const cornerRadiusPill = 40;
+export const cornerRadiusSm = 8;
+export const cornerRadiusXs = 4;
 export const fontFamily = "System";
 export const fontSizeBase = 16;
 export const fontSizeCaps = 10;
@@ -238,6 +248,9 @@ export const borders = {
 borderSizeLg,
 borderSizeSm,
 borderSizeXl,
+borderWidthLg,
+borderWidthSm,
+borderWidthXl,
 };
 export const boxShadows = {
 shadowLgColor,
@@ -355,8 +368,15 @@ textXxxlLetterSpacing,
 };
 export const radii = {
 borderRadiusLg,
+borderRadiusMd,
 borderRadiusPill,
 borderRadiusSm,
+borderRadiusXs,
+cornerRadiusLg,
+cornerRadiusMd,
+cornerRadiusPill,
+cornerRadiusSm,
+cornerRadiusXs,
 };
 export const semanticColors = {
 backgroundAlternativeColor,

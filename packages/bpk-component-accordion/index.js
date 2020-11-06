@@ -16,8 +16,10 @@
  * limitations under the License.
  */
 
+/* @flow strict */
+
 import BpkAccordion from './src/BpkAccordion';
-import BpkAccordionItem from './src/BpkAccordionItem';
+import BpkAccordionItem, { WEIGHT_STYLES } from './src/BpkAccordionItem';
 import withSingleItemAccordionState from './src/withSingleItemAccordionState';
 import withAccordionItemState from './src/withAccordionItemState';
 import themeAttributes from './src/themeAttributes';
@@ -28,4 +30,5 @@ export {
   withSingleItemAccordionState,
   withAccordionItemState,
   themeAttributes,
+  WEIGHT_STYLES,
 };

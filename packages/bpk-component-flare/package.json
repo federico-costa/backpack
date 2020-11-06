@@ -1,29 +1,29 @@
 {
   "name": "bpk-component-flare",
-  "version": "1.0.63",
+  "version": "1.0.91",
   "description": "Backpack FlareBar and ContentBubble component.",
-  "main": "index.js",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:Skyscanner/backpack.git"
   },
-  "scripts": {
-    "build": "gulp"
-  },
   "author": "Backpack Design System <backpack@skyscanner.net>",
-  "license": "Apache-2.0",
-  "peerDependencies": {
-    "react": "^15.0.0 || ^16.0.0"
-  },
-  "dependencies": {
-    "bpk-component-label": "^4.0.62",
-    "bpk-component-text": "^3.0.29",
-    "bpk-mixins": "^19.1.30",
-    "bpk-react-utils": "^3.0.2",
-    "prop-types": "^15.6.2"
-  },
+  "main": "index.js",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "gitHead": "ace52722a3d752ef1fed43eab155666d232ce21d"
+  "scripts": {
+    "build": "gulp"
+  },
+  "gitHead": "a6910b1b5068590c7ba3691bedeb5818160cc477",
+  "dependencies": {
+    "bpk-component-label": "^4.0.90",
+    "bpk-component-text": "^3.1.24",
+    "bpk-mixins": "^20.1.6",
+    "bpk-react-utils": "^3.0.7",
+    "prop-types": "^15.6.2"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
+  }
 }

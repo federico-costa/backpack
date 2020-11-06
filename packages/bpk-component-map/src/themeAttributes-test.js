@@ -17,20 +17,28 @@
  */
 
 import {
-  primaryMarkerThemeAttributes,
-  secondaryMarkerThemeAttributes,
+  defaultIconMarkerThemeAttributes,
+  priceMarkerThemeAttributes,
 } from './themeAttributes';
 
 describe('themeAttributes', () => {
-  it('should export the correct primary theme attributes', () => {
-    expect(primaryMarkerThemeAttributes).toEqual([
-      'mapMarkerPrimaryBackgroundColor',
+  it('should export the correct default icon marker theme attributes', () => {
+    expect(defaultIconMarkerThemeAttributes).toEqual([
+      'iconMarkerDefaultBackgroundColor',
+      'iconMarkerDefaultSelectedColor',
+      'iconMarkerDefaultDisabledColor',
+      'iconMarkerDefaultDisabledBackgroundColor',
     ]);
   });
 
-  it('should export the correct secondary theme attributes', () => {
-    expect(secondaryMarkerThemeAttributes).toEqual([
-      'mapMarkerSecondaryBackgroundColor',
+  it('should export the correct price marker theme attributes', () => {
+    expect(priceMarkerThemeAttributes).toEqual([
+      'priceMarkerBackgroundColor',
+      'priceMarkerSelectedBorderColor',
+      'priceMarkerSelectedColor',
+      'priceMarkerViewedBackgroundColor',
+      'priceMarkerViewedBorderColor',
+      'priceMarkerViewedColor',
     ]);
   });
 });

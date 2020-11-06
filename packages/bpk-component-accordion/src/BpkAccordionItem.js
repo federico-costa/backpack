@@ -16,12 +16,17 @@
  * limitations under the License.
  */
 
+/* @flow strict */
+
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { type Node, type Element } from 'react';
 import AnimateHeight from 'bpk-animate-height';
 import { withButtonAlignment } from 'bpk-component-icon';
 import ChevronDownIcon from 'bpk-component-icon/sm/chevron-down';
-import BpkText from 'bpk-component-text';
+import BpkText, {
+  TEXT_STYLES,
+  WEIGHT_STYLES as weights,
+} from 'bpk-component-text';
 import { cssModules } from 'bpk-react-utils';
 
 import STYLES from './BpkAccordionItem.scss';
@@ -30,12 +35,27 @@ const getClassName = cssModules(STYLES);
 
 const ExpandIcon = withButtonAlignment(ChevronDownIcon);
 
-const BpkAccordionItem = props => {
+export const WEIGHT_STYLES = weights;
+
+type Props = {
+  children: Node,
+  id: string,
+  title: string,
+  weight: $Keys<typeof WEIGHT_STYLES>,
+  expanded: boolean,
+  icon: ?Element<any>,
+  onClick: () => mixed,
+  tagName: 'span' | 'p' | 'text' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6',
+  textStyle: $Keys<typeof TEXT_STYLES>,
+};
+
+const BpkAccordionItem = (props: Props) => {
   const iconClassNames = [getClassName('bpk-accordion__item-expand-icon')];
   const {
     id,
     title,
     children,
+    weight,
     expanded,
     icon,
     onClick,
@@ -47,6 +67,7 @@ const BpkAccordionItem = props => {
   // if this component is passed initiallyExpanded, this makes sure it doesn't
   // end up on the node. Not ideal as our container component shouldn't be passing
   // it, but the benefit of a better container api versus this was worth it
+  // $FlowFixMe[prop-missing] - see above
   delete rest.initiallyExpanded;
 
   if (expanded) {
@@ -63,6 +84,7 @@ const BpkAccordionItem = props => {
     : null;
 
   return (
+    // $FlowFixMe[cannot-spread-inexact] - inexact rest. See decisions/flowfixme.md
     <div id={id} {...rest}>
       <dt
         aria-level="3"
@@ -81,6 +103,7 @@ const BpkAccordionItem = props => {
               textStyle={textStyle}
               tagName={tagName}
               className={getClassName('bpk-accordion__title-text')}
+              weight={weight}
             >
               {clonedIcon}
               {title}
@@ -108,6 +131,7 @@ BpkAccordionItem.propTypes = {
   children: PropTypes.node.isRequired,
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  weight: PropTypes.string,
   expanded: PropTypes.bool,
   icon: PropTypes.node,
   onClick: PropTypes.func,
@@ -116,11 +140,12 @@ BpkAccordionItem.propTypes = {
 };
 
 BpkAccordionItem.defaultProps = {
+  weight: WEIGHT_STYLES.regular,
   expanded: false,
   icon: null,
   onClick: () => null,
   tagName: 'span',
-  textStyle: 'base',
+  textStyle: TEXT_STYLES.base,
 };
 
 export default BpkAccordionItem;

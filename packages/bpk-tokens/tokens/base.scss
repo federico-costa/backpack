@@ -62,6 +62,8 @@ $bpk-banner-alert-success-color: rgb(0, 166, 152);
 /// @group notifications
 $bpk-banner-alert-warn-color: rgb(255, 181, 77);
 /// @group radii
+$bpk-border-radius-md: .75rem;
+/// @group radii
 $bpk-border-radius-pill: 1.125rem;
 /// @group radii
 $bpk-border-radius-pill-lg: 1.3125rem;
@@ -108,7 +110,7 @@ $bpk-button-active-color: rgb(255, 255, 255);
 /// @group buttons
 $bpk-button-background-color: rgb(0, 166, 152);
 /// @group buttons
-$bpk-button-border-radius: .25rem;
+$bpk-button-border-radius: .375rem;
 /// @group buttons
 $bpk-button-box-shadow: none;
 /// @group buttons
@@ -555,8 +557,6 @@ $bpk-input-padding-x: .75rem;
 $bpk-input-padding-y: .375rem;
 /// @group forms
 $bpk-input-placeholder-color: rgb(104, 105, 127);
-/// @group forms
-$bpk-input-placeholder-font-style: italic;
 /// @group forms
 $bpk-label-color: rgb(17, 18, 54);
 /// @group forms

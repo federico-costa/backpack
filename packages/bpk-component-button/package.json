@@ -1,23 +1,23 @@
 {
   "name": "bpk-component-button",
-  "version": "3.2.40",
+  "version": "3.3.0",
   "description": "Backpack button component.",
-  "main": "index.js",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:Skyscanner/backpack.git"
   },
   "author": "Backpack Design System <backpack@skyscanner.net>",
-  "license": "Apache-2.0",
-  "peerDependencies": {
-    "react": "^15.0.0 || ^16.0.0"
-  },
-  "dependencies": {
-    "bpk-mixins": "^19.1.30",
-    "prop-types": "^15.6.2"
-  },
+  "main": "index.js",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "gitHead": "ace52722a3d752ef1fed43eab155666d232ce21d"
+  "gitHead": "a6910b1b5068590c7ba3691bedeb5818160cc477",
+  "dependencies": {
+    "bpk-mixins": "^20.1.6",
+    "prop-types": "^15.6.2"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
+  }
 }

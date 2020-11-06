@@ -31,6 +31,7 @@ BpkCarouselItem
 
 BpkChip
 BpkDismissibleChip
+BpkSelectableChip
 
 BpkDialingCodeList
 
@@ -95,6 +96,8 @@ BpkStarRating
 BpkInteractiveStar
 BpkInteractiveStarRating
 withInteractiveStarRatingState
+
+BpkText
 
 BpkThemeProvider
 
@@ -203,6 +206,7 @@ Themeability
 themeable
 TTF
 UIs
+UIKit
 uncompiled
 url
 z-index
@@ -259,6 +263,7 @@ borderRadius
 borderRadiusStyle
 BORDER_RADIUS_STYLES
 BORDER_RADIUS_STYLES.none
+BORDER_RADIUS_STYLES.sm
 borderlessBackground
 buttonType
 cellType
@@ -289,12 +294,15 @@ dialingCodes
 dialingCodeMask
 dismissable
 dismissButtonLabel
+toggleable
 dockedFirst
 dockedMiddle
 dockedLast
 doneLabel
 expandDelay
+flareClassName
 fillStyle
+foregroundContent
 formatValue
 getApplicationElement
 getArrowPositionCallback
@@ -306,6 +314,12 @@ ICON_POSITION
 ICON_POSITION.LEADING
 ICON_POSITION.TRAILING
 headerText
+headerIcon
+headerIconType
+HEADER_ICON_TYPES
+HEADER_ICON_TYPES.primary
+HEADER_ICON_TYPES.warning
+HEADER_ICON_TYPES.destructive
 hideOnTouchDevices
 hoverRating
 iconAlignment
@@ -346,6 +360,9 @@ onRender
 onToggleExpanded
 onValueChange
 overlayStyle
+overlayType
+OVERLAY_TYPES
+OVERLAY_TYPES.tint
 pageCount
 popperModifiers
 portalStyle
@@ -354,6 +371,9 @@ props.title
 ratingLabel
 RATING_SIZES
 RATING_SIZES.base
+RATING_TYPES
+RATING_TYPES.default
+RATING_TYPES.pill
 renderFlag
 renderTarget
 selectedDates
@@ -377,6 +397,15 @@ subtitleView
 suppressHydrationWarnings
 SWITCH_TYPES.primary
 SWITCH_TYPES.event
+TEXT_STYLES.xs
+TEXT_STYLES.sm
+TEXT_STYLES.base
+TEXT_STYLES.lg
+TEXT_STYLES.xl
+TEXT_STYLES.xxl
+TEXT_STYLES.xxxl
+TEXT_STYLES.xxxxl
+TEXT_STYLES.xxxxxl
 textProps
 textStyle
 themeAttributes
@@ -387,6 +416,9 @@ TransitionInitialMount
 transitionTimeout
 uppercase
 validationMessage
+WEIGHT_STYLES.regular
+WEIGHT_STYLES.bold
+WEIGHT_STYLES.black
 withNotches
 withOpenEvents
 withRtlSupport
@@ -437,6 +469,8 @@ fullScreenOnMobile
 fullScreen
 showHeader
 leadingIndicatorClassName
+leadingAccessoryView
+trailingAccessoryView
 scrollerRef
 trailingIndicatorClassName
 googleMapURL
@@ -549,7 +583,8 @@ BpkNavigationBar
 BpkNavigationBarIconButton
 BpkOverlayView
 BpkMap
-BpkMapMarker
+BpkIconMarker
+BpkPriceMarker
 BpkBackgroundImage
 BpkGridColumn
 BpkGridRow
@@ -624,6 +659,7 @@ bpk-component-modal
 bpk-component-navigation-bar
 bpk-component-navigation-stack
 bpk-component-nudger
+bpk-component-overlay
 bpk-component-pagination
 bpk-component-panel
 bpk-component-paragraph
@@ -773,3 +809,4 @@ props.label
 semver.org
 ROUNDING_TYPES
 ROUNDING_TYPES.down
+onOpenChange

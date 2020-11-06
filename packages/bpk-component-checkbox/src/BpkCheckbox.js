@@ -16,17 +16,30 @@
  * limitations under the License.
  */
 
+/* @flow strict */
+
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { type Node } from 'react';
 import { cssModules } from 'bpk-react-utils';
 
 import STYLES from './BpkCheckbox.scss';
 
 const getClassName = cssModules(STYLES);
 
-const BpkCheckbox = props => {
-  const classNames = [getClassName('bpk-checkbox')];
-  const labelClassNames = [getClassName('bpk-checkbox__label')];
+type Props = {
+  name: string,
+  label: Node,
+  required: boolean,
+  disabled: boolean,
+  white: boolean,
+  className: ?string,
+  smallLabel: boolean,
+  valid: ?boolean,
+  checked: boolean,
+  indeterminate: boolean,
+};
+
+const BpkCheckbox = (props: Props) => {
   const {
     name,
     label,
@@ -36,6 +49,7 @@ const BpkCheckbox = props => {
     className,
     smallLabel,
     valid,
+    checked,
     indeterminate,
     ...rest
   } = props;
@@ -44,39 +58,45 @@ const BpkCheckbox = props => {
   // treated as neither valid nor invalid
   const isInvalid = valid === false;
 
-  if (white) {
-    classNames.push(getClassName('bpk-checkbox--white'));
-  }
-  if (disabled) {
-    classNames.push(getClassName('bpk-checkbox--disabled'));
-  }
-  if (smallLabel) {
-    labelClassNames.push(getClassName('bpk-checkbox__label--small'));
-  }
-  if (isInvalid) {
-    classNames.push(getClassName('bpk-checkbox--invalid'));
-  }
-  if (className) {
-    classNames.push(className);
-  }
+  const classNames: string = getClassName(
+    'bpk-checkbox',
+    white && 'bpk-checkbox--white',
+    disabled && 'bpk-checkbox--disabled',
+    isInvalid && 'bpk-checkbox--invalid',
+    className,
+  );
+  const labelClassNames: string = getClassName(
+    'bpk-checkbox__label',
+    smallLabel && 'bpk-checkbox__label--small',
+  );
+  const inputClasses: string = getClassName(
+    'bpk-checkbox__input',
+    white && 'bpk-checkbox__input-white',
+    checked && !indeterminate && 'bpk-checkbox__input-checkmark',
+    indeterminate && 'bpk-checkbox__input-indeterminate',
+  );
 
   return (
-    <label className={classNames.join(' ')}>
+    <label className={classNames}>
+      {/* $FlowFixMe[cannot-spread-inexact] - inexact rest. See 'decisions/flowfixme.md'. */}
       <input
         type="checkbox"
-        className={getClassName('bpk-checkbox__input')}
+        className={inputClasses}
         name={name}
         disabled={disabled}
         aria-label={label}
         aria-invalid={isInvalid}
+        data-indeterminate={indeterminate}
         ref={e => {
           if (e) {
             e.indeterminate = indeterminate;
           }
         }}
+        checked={checked}
         {...rest}
       />
-      <span className={labelClassNames.join(' ')} aria-hidden="true">
+
+      <span className={labelClassNames} aria-hidden="true">
         {label}
         {!disabled && required && (
           <span className={getClassName('bpk-checkbox__asterisk')}>*</span>
@@ -95,6 +115,7 @@ BpkCheckbox.propTypes = {
   className: PropTypes.string,
   smallLabel: PropTypes.bool,
   valid: PropTypes.bool,
+  checked: PropTypes.bool,
   indeterminate: PropTypes.bool,
 };
 
@@ -105,6 +126,7 @@ BpkCheckbox.defaultProps = {
   className: null,
   smallLabel: false,
   valid: null,
+  checked: false,
   indeterminate: false,
 };
 

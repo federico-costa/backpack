@@ -39,6 +39,7 @@ export const bannerAlertNeutralColor = "rgb(104, 105, 127)";
 export const bannerAlertPrimaryColor = "rgb(7, 112, 227)";
 export const bannerAlertSuccessColor = "rgb(0, 166, 152)";
 export const bannerAlertWarnColor = "rgb(255, 181, 77)";
+export const borderRadiusMd = ".75rem";
 export const borderRadiusPill = "1.125rem";
 export const borderRadiusPillLg = "1.3125rem";
 export const borderRadiusSm = ".375rem";
@@ -62,7 +63,7 @@ export const buttonActiveBackgroundImage = "none";
 export const buttonActiveBoxShadow = "none";
 export const buttonActiveColor = "rgb(255, 255, 255)";
 export const buttonBackgroundColor = "rgb(0, 166, 152)";
-export const buttonBorderRadius = ".25rem";
+export const buttonBorderRadius = ".375rem";
 export const buttonBoxShadow = "none";
 export const buttonColor = "rgb(255, 255, 255)";
 export const buttonDestructiveActiveBackgroundColor = "rgb(255, 255, 255)";
@@ -286,7 +287,6 @@ export const inputLargeHeight = "2.625rem + .375rem";
 export const inputPaddingX = ".75rem";
 export const inputPaddingY = ".375rem";
 export const inputPlaceholderColor = "rgb(104, 105, 127)";
-export const inputPlaceholderFontStyle = "italic";
 export const labelColor = "rgb(17, 18, 54)";
 export const labelDisabledColor = "rgb(178, 178, 191)";
 export const labelFontSize = ".75rem";
@@ -675,7 +675,6 @@ inputLargeHeight,
 inputPaddingX,
 inputPaddingY,
 inputPlaceholderColor,
-inputPlaceholderFontStyle,
 labelColor,
 labelDisabledColor,
 labelFontSize,
@@ -770,6 +769,7 @@ panelBorderColor,
 panelPadding,
 };
 export const radii = {
+borderRadiusMd,
 borderRadiusPill,
 borderRadiusPillLg,
 borderRadiusSm,

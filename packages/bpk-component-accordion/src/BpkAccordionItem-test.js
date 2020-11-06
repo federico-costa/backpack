@@ -16,11 +16,13 @@
  * limitations under the License.
  */
 
+/* @flow strict */
+
 import React from 'react';
 import renderer from 'react-test-renderer';
 import StopsIcon from 'bpk-component-icon/sm/stops';
 
-import BpkAccordionItem from './BpkAccordionItem';
+import BpkAccordionItem, { WEIGHT_STYLES } from './BpkAccordionItem';
 
 describe('BpkAccordionItem', () => {
   it('should render correctly', () => {
@@ -75,10 +77,14 @@ describe('BpkAccordionItem', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should render correctly with "bold" prop set', () => {
+  it('should render correctly with "weight" prop set to bold', () => {
     const tree = renderer
       .create(
-        <BpkAccordionItem id="my-accordion" title="My accordion item" bold>
+        <BpkAccordionItem
+          id="my-accordion"
+          title="My accordion item"
+          weight={WEIGHT_STYLES.bold}
+        >
           My accordion content
         </BpkAccordionItem>,
       )

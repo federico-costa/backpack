@@ -18,7 +18,7 @@
 
 /* @flow strict */
 
-import React from 'react';
+import React, { type Node } from 'react';
 import PropTypes from 'prop-types';
 import { cssModules } from 'bpk-react-utils';
 import BpkCloseButton from 'bpk-component-close-button';
@@ -27,19 +27,47 @@ import BpkModal, {
   propTypes as modalPropTypes,
   defaultProps as modalDefaultProps,
 } from 'bpk-component-modal';
+import { BpkContentBubble } from 'bpk-component-flare';
 
 import STYLES from './BpkDialog.scss';
-import { onClosePropType } from './customPropTypes';
 
 const getClassName = cssModules(STYLES);
+
+export const HEADER_ICON_TYPES = {
+  primary: 'primary',
+  warning: 'warning',
+  destructive: 'destructive',
+};
 
 export type Props = {
   ...$Exact<BpkModalProps>,
   dismissible: boolean,
+  flare: boolean,
+  flareClassName: ?string,
+  headerIcon: ?Node,
+  headerIconType: $Keys<typeof HEADER_ICON_TYPES>,
 };
 
 const BpkDialog = (props: Props) => {
-  const { children, dismissible, onClose, closeLabel, ...rest } = props;
+  const {
+    children,
+    closeLabel,
+    dismissible,
+    flare,
+    flareClassName,
+    headerIcon,
+    headerIconType,
+    onClose,
+    ...rest
+  } = props;
+
+  const contentClassNames = getClassName('bpk-dialog--with-icon');
+  const flareClassNames = getClassName('bpk-dialog__flare', flareClassName);
+  const headerIconClassNames = getClassName(
+    'bpk-dialog__icon',
+    `bpk-dialog__icon--${headerIconType}`,
+  );
+  const closeButtonClassNames = getClassName('bpk-dialog__close-button');
 
   return (
     <BpkModal
@@ -51,10 +79,15 @@ const BpkDialog = (props: Props) => {
       closeOnEscPressed={dismissible}
       fullScreenOnMobile={false}
       isIphone={false}
+      contentClassName={headerIcon ? contentClassNames : null}
+      INTERNAL__outerComponent={
+        flare ? <BpkContentBubble className={flareClassNames} /> : null
+      }
     >
+      {headerIcon && <div className={headerIconClassNames}>{headerIcon}</div>}
       {dismissible && (
         <BpkCloseButton
-          className={getClassName('bpk-dialog__close-button')}
+          className={closeButtonClassNames}
           label={closeLabel}
           onClick={onClose}
         />
@@ -75,14 +108,22 @@ const {
 
 BpkDialog.propTypes = {
   ...newModalPropTypes,
-  onClose: onClosePropType,
+  onClose: PropTypes.func,
   dismissible: PropTypes.bool,
+  flare: PropTypes.bool,
+  flareClassName: PropTypes.string,
+  headerIcon: PropTypes.node,
+  headerIconType: PropTypes.oneOf(Object.keys(HEADER_ICON_TYPES)),
 };
 
 BpkDialog.defaultProps = {
   ...modalDefaultProps,
-  onClose: null,
+  onClose: () => null,
   dismissible: true,
+  flare: false,
+  flareClassName: null,
+  headerIcon: null,
+  headerIconType: HEADER_ICON_TYPES.primary,
 };
 
 export default BpkDialog;

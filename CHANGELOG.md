@@ -1,6 +1,316 @@
 # Backpack changelog
 
-[Unreleased changes](./UNRELEASED.yaml).
+[Unreleased changes](./UNRELEASED.md).
+
+# 2020-10-27
+
+**Breaking:**
+
+ - bpk-tokens: 35.0.2 => 36.0.0
+   - `borderRadiusSm` and `cornerRadiusSm` for iOS have changed from `4` to `8`.
+
+# 2020-10-26
+
+**Fixed:**
+
+ - bpk-component-datatable: 2.0.44 => 2.0.45
+   - When `BpkDataTable` doesn't have `onRowClick` set, the hover state won't apply to rows. Previously, the hover state would apply regardless of whether rows were selectable or not.
+
+# 2020-10-22
+
+**Fixed:**
+
+ - bpk-component-image: 4.0.45 => 4.0.46
+   - Added flow types for `withLoadingBehavior`.
+
+ - bpk-tokens: 35.0.0 => 35.0.1
+   - Reverted the removal of iOS `borderSize` and `borderRadius` tokens as these should still exist for use in React Native.
+
+# 2020-10-20
+
+**Breaking:**
+
+ - bpk-tokens: 34.2.0 => 35.0.0
+   - `borderRadiusSm` for Android has changed from `4` to `8`.
+
+# 2020-10-13 - New overlay component
+
+**Added:**
+
+ - bpk-component-overlay: 1.0.0
+   - New `BpkOverlay` component, used for adding tints to backgrounds. See https://backpack.github.io/components/overlay?platform=web for more.
+
+# 2020-10-12 - New radius changes
+
+**Added:**
+
+- bpk-tokens: 34.1.0 => 34.2.0
+  - Added new radius tokens for iOS and Android as part of the new guidelines.
+    - For now we are going to keep SM the same value until we have time to fully adopt in our apps - in case anything urgent arises that requires fixing.
+
+**Fixed:**
+
+- bpk-component-button: 3.2.62 => 3.2.63
+  - `BpkButton` has been updated to use `border-radius-sm` instead of `border-radius-xs` as per the new guidelines.
+
+# 2020-10-07 - New flare variant of `BpkDialog`
+
+**Added:**
+  - bpk-component-dialog: 2.1.1 => 2.2.0
+    - Added new `flare` and `flareClassName` props to allow flare variant of dialog.
+
+# 2020-10-05 - `BpkCard` border radius update and `BpkSelect` a11y fix.
+
+**Added:**
+  - bpk-tokens: 34.0.0 => 34.1.0
+    - New `bpk-border-radius-md` token for use on cards
+  - bpk-mixins: 20.0.11 => 20.1.0
+    - New `bpk-border-radius-md` mixin to apply the token to `border-radius`
+
+**Fixed:**
+  - bpk-component-card: 2.1.11 => 2.1.12
+  - bpk-component-panel: 2.0.82 => 2.0.83
+    - Have been updated to use `border-radius-md` instead of `border-radius-sm` as per the new guidelines.
+  - bpk-component-select: 3.0.82 => 3.0.83
+    - Images passed to `BpkSelect` now have `aria-hidden` set, preventing them from interfering with screen readers.
+
+# 2020-10-05 - New icon variant of `BpkDialog`.
+
+**Added:**
+  - bpk-component-dialog: 2.0.86 => 2.1.0
+    - Added new `headerIcon` and `headerIconType` props to allow icon variant of dialog.
+
+**Fixed:**
+  - bpk-svgs: 12.1.10 => 12.1.11
+      - The media icon was previously flipping in RTL. This has now been fixed.
+
+
+# 2020-09-30 - Flow type fix for horizontal nav
+
+**Fixed:**
+  - bpk-component-horizontal-nav:
+    - Fixed flow types for scroller ref by removing needless `$FlowIgnore`s.
+
+# 2020-09-29 - README clarification on `BpkChip`
+
+**Fixed:**
+  - bpk-component-chip: 4.0.10 => 4.0.11
+    - Updated docs on usage of component.
+
+# 2020-09-25 - New `onOpenChange` prop for calendar.
+
+**Added:**
+ - bpk-component-datepicker: 11.2.40 => 11.3.0
+   - New `onOpenChange` prop which is a callback method that will be called when the date picker open state changes
+   - The isOpen state can be updated through the isOpen prop
+
+# 2020-09-21 - Fixed incorrect flow typing.
+
+**Fixed:**
+  - bpk-component-breakpoint: 2.0.81 => 2.0.82
+    - Fixed incorrect flow type for `children` prop.
+  - bpk-component-checkbox: 2.2.10 => 2.2.11
+    - Fixed incorrect flow type for `label` prop.
+
+# 2020-09-14 - New `BpkAccordion` prop and updating input placeholder styles
+
+**Breaking:**
+  - bpk-tokens: 33.0.1 => 34.0.0
+    - Removed `$bpk-input-placeholder-font-style` token as this is no longer required or used in the input component.
+      - NOTE - This is not breaking if you are not using this token directly.
+
+**Added:**
+  - bpk-component-accordion: 3.1.83 => 3.2.0
+    - Added new `weight` prop to allow titles to support `bold` and `heavy` font weight.
+
+**Fixed:**
+    - bpk-component-input: 5.0.81 => 5.0.82
+    - bpk-component-textarea: 2.0.80 => 2.0.81
+      - Removed setting placeholder `font-style` to italic.
+
+# 2020-09-11 - Map Marker update and `BpkHorizontalNav` a11y fixes
+
+**Breaking**:
+- bpk-component-map: 3.2.1 => 4.0.0
+  - `BpkMapMarker` has been replaced with `BpkIconMarker`. See the [migration guide](https://github.com/Skyscanner/backpack/blob/master/packages/bpk-component-map/docs/migrating-from-v3-to-v4.md) for more information.
+
+**Fixed**:
+  - bpk-component-horizontal-nav: `3.2.20`
+      - Fixed accessibility issues on the `BpkHorizontalNav` that prevented the component to be functional when using a screen reader to navigate.
+
+# 2020-09-03 - Removing old non-UIKit tokens
+
+**Breaking**
+  - bpk-tokens: 32.1.0 => 33.0.0
+      - Removed non-UIKit aligned iOS tokens
+
+# 2020-09-03 - New `BpkPriceMarker` and drop support for React 15
+
+**Breaking**
+  - All packages:
+      - Packages no longer support a peer-dependency of React 15
+
+**Added:**
+  - bpk-component-map: 3.1.70 => 3.2.0
+    - Added `BpkPriceMarker` to display pricing markers on the map.
+
+# 2020-08-31 - Flow upgrades.
+
+**Added:**
+  - bpk-component-barchart: 3.0.78 => 3.1.0
+    - Added Flow.
+
+**Fixed:**
+  - Upgraded Flow to `0.132.0` and changed syntax for `FlowFixMe` suppressions in components.
+
+# 2020-08-28 - New iOS tokens and Flow support.
+
+**Added:**
+  - bpk-tokens: 32.0.5 => 32.1.0
+    - Added new `UIKit` aligned token aliases for corner radii and border width values.
+
+  - bpk-component-close-button: 2.0.76 => 2.0.77
+  - bpk-component-drawer: 3.0.33 => 3.0.34
+  - bpk-component-list: 3.0.75 => 3.0.76
+  - bpk-component-progress: 2.0.76 => 2.0.77
+    - Added Flow.
+
+**Fixed:**
+  - bpk-component-banner-alert: 4.2.24 => 4.2.25
+  - bpk-component-modal: 2.1.75 => 2.1.76
+    - Flow type fix.
+
+# 2020-08-24 - Icon fixes.
+
+**Fixed:**
+  - bpk-svgs: 12.1.5 => 12.1.6
+    - Fixed an issue that causes the `translate` icon's dots to disappear sometimes.
+    - Reverted the `eco-leaf` icon to the previous design to align better with existing campaigns.
+
+# 2020-08-07 - Added Flow support.
+
+**Added**:
+  - bpk-component-accordion: 2.1.77
+  - bpk-component-breakpoint: 2.00.74
+  - bpk-component-paragraph: 2.0.74
+  - bpk-component-radio: 2.0.74
+  - bpk-component-star-rating: 2.1.72
+  - bpk-component-table: 2.0.74
+  - bpk-component-textarea: 2.0.74
+    - Added Flow.
+
+# 2020-08-06 - `filter` icon fix.
+
+**Fixed:**
+  - bpk-svgs: 12.1.3 => 12.1.4
+    - Fixed an issue with the `filter` icon that caused it to render incorrectly when used via the `BpkIcon` font.
+
+# 2020-08-05 - Added Flow support.
+
+**Added:**
+  - bpk-component-autosuggest: 4.0.74 => 4.1.0
+  - bpk-component-card: 2.0.71 => 2.1.0
+  - bpk-component-checkbox: 2.1.23 => 2.2.0
+  - bpk-component-heading: 3.0.71 => 3.1.0
+  - bpk-component-link: 2.0.71 => 2.1.0
+  - bpk-component-loading-button: 3.1.24 => 3.2.0
+  - bpk-component-spinner: 3.0.71 => 3.1.0
+    - Added Flow.
+
+# 2020-08-03 - New chip component
+
+**Breaking:**
+- bpk-component-chip: 4.0.0
+  - The chip component has been completely rewritten to have a new look, a more modern API and support more use cases easily. See the [migration guide](https://github.com/Skyscanner/backpack/blob/master/packages/bpk-component-chip/docs/migrating-from-v3-to-v4.md) for more information.
+- bpk-mixins: 20.0.0
+  - The `bpk-chip__label` mixin has been removed, as it's no longer used in the new chip implementation.
+
+  **Fixed**:
+  - bpk-component-dialog 2.0.75
+  - bpk-component-modal: 2.1.70
+    - The onClose prop now defaults to a function as required by Portal within.
+
+
+
+# 2020-07-29 - Reinstated native icons removed by accident
+
+**Added:**
+- bpk-svgs: 12.1.0 => 12.1.1
+  - Reinstating large native icons which were accidentally deleted.
+  - Updated small native icons to reflect the new style.
+
+# 2020-07-29 - Rating redesign and `BpkChip` disabled fix
+
+**Added:**
+- bpk-component-rating: 2.0.69 => 2.1.0
+  - Rating has been redesigned to have a fresh look.
+  - Fixed A11y contrast issues with `high` and `medium` ratings.
+  - Added new `pill` style rating which is set with the `RATING_TYPES` property.
+
+**Fixed:**
+- bpk-component-chip: 3.3.0 => 3.3.1
+  - Fixed an issue where `disabled` chips could still be pressed and looked wrong.
+
+
+# 2020-07-28 - Chip redesign
+
+**Added:**
+
+- bpk-component-chip: 3.3.0
+  - Chips have been redesigned to have a fresh new look.
+  - Added two new chip types — `success` and `light`.
+  - Added a new `disabled` prop.
+
+# 2020-07-27 - `xl` icons for native
+
+**Added:**
+
+ - bpk-svgs: 12.0.2 => 12.1.0
+   - Added `xl` star-rating icons for use on mobile native platforms.
+
+# 2020-07-22 - Badge design tweaks and scrollable calendar changes
+
+**Changed:**
+  - bpk-component-badge: 2.0.67 => 2.0.68
+    - Tweaked design of badges.
+
+  - bpk-component-scrollable-calendar: 2.0.69 => 2.0.70
+    - Remove resize event listeners when the component is unmounted.
+
+# 2020-07-14 - Updated `BpkText` API
+
+**Added:**
+  - bpk-component-text: 3.0.32 => 3.1.0
+    - Added `weight` prop to set the `bold` and `black` font on text components.
+    - Deprecated `bold` prop in favour of `weight`.
+
+# 2020-07-13
+
+**Changed:**
+- bpk-component-icon: 8.2.2 => 8.2.3
+- bpk-svgs: 12.0.1 => 12.0.2
+  - All icons have been optimised, reducing their file size slightly.
+
+# 2020-07-10
+
+**Changed**:
+  - bpk-svgs: 12.0.0 => 12.0.1
+  - bpk-component-spinner: 3.0.63 => 3.0.64
+    - The spinner has a fresh new design.
+
+# 2020-07-09 - Refreshed Radio and Checkbox styles
+
+**Breaking:**
+- bpk-svgs: 11.2.0 => 12.0.0
+  - Removed the radio SVGs that were being used in the radio component as the component no longer uses them. This change is breaking only if you are using `bpk-radio--invalid` and `bpk-radio__input` mixins directly, otherwise if using `BpkRadio` component this major does not affect you.
+  - Removed the checkbox SVGs that were being used in the checkbox component as the component no longer uses them. This change is breaking only if you are using `bpk-checkbox--invalid` and `bpk-checkbox__input` mixins directly, otherwise if using `BpkCheckbox` component this major does not affect you.
+
+**Fixed:**
+- bpk-mixins: 19.1.30 => 19.1.31
+- bpk-component-radio: 2.0.61 => 2.0.62
+  - `BpkRadio` has a refreshed, modern appearance.
+- bpk-component-checkbox: 2.1.13 => 2.1.14
+  - `BpkCheckbox` has a refreshed modern appearance.
 
 # 2020-07-07
 

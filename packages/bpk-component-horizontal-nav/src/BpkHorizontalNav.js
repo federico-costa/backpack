@@ -130,7 +130,7 @@ class BpkHorizontalNav extends Component<Props> {
     const scrollAdjustment = selectedItemPos.left - scrollPos.left;
     // Some browsers don't support smooth scrolling, so in those cases we must fall back to simply setting `scrollLeft`
     if (
-      // $FlowFixMe - we've already checked that `this.scrollRef` is defined
+      this.scrollRef &&
       this.scrollRef.scroll &&
       typeof this.scrollRef.scroll === 'function' &&
       useSmoothScroll
@@ -139,8 +139,7 @@ class BpkHorizontalNav extends Component<Props> {
         left: scrollAdjustment,
         behavior: 'smooth',
       });
-    } else {
-      // $FlowFixMe - we've already checked that `this.scrollRef` is defined
+    } else if (this.scrollRef) {
       this.scrollRef.scrollLeft = scrollAdjustment;
     }
   };
@@ -186,7 +185,7 @@ class BpkHorizontalNav extends Component<Props> {
     }
 
     return (
-      // $FlowFixMe - inexact rest. See 'decisions/flowfixme.md'.
+      // $FlowFixMe[cannot-spread-inexact] - inexact rest. See 'decisions/flowfixme.md'.
       <BpkMobileScrollContainer
         innerContainerTagName="nav"
         className={classNames}
@@ -197,9 +196,12 @@ class BpkHorizontalNav extends Component<Props> {
         }}
         {...rest}
       >
-        <ul className={getClassName('bpk-horizontal-nav__list')} role="tablist">
+        <div
+          className={getClassName('bpk-horizontal-nav__list')}
+          role="tablist"
+        >
           {children}
-        </ul>
+        </div>
       </BpkMobileScrollContainer>
     );
   }

@@ -1,24 +1,24 @@
 {
   "name": "bpk-stylesheets",
-  "version": "6.0.28",
+  "version": "6.0.56",
   "description": "Backpack's stylesheets.",
-  "main": "index.js",
-  "scripts": {
-    "build": "node build"
-  },
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:Skyscanner/backpack.git"
   },
   "author": "Backpack Design System <backpack@skyscanner.net>",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "bpk-mixins": "^19.1.30",
-    "bpk-tokens": "^32.0.5",
-    "normalize.css": "4.2.0"
-  },
+  "main": "index.js",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "gitHead": "ace52722a3d752ef1fed43eab155666d232ce21d"
+  "scripts": {
+    "build": "node build"
+  },
+  "gitHead": "a6910b1b5068590c7ba3691bedeb5818160cc477",
+  "dependencies": {
+    "bpk-mixins": "^20.1.6",
+    "bpk-tokens": "^36.0.1",
+    "normalize.css": "4.2.0"
+  }
 }

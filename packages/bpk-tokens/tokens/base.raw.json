@@ -36,6 +36,9 @@
     "BLACK_TINT_06": {
       "value": "#8E8E93"
     },
+    "BORDER_RADIUS_MD": {
+      "value": ".75rem"
+    },
     "BORDER_RADIUS_PILL": {
       "value": "1.125rem"
     },
@@ -426,6 +429,13 @@
       "originalValue": "{!ERFOUD}",
       "name": "BANNER_ALERT_WARN_COLOR"
     },
+    "BORDER_RADIUS_MD": {
+      "type": "size",
+      "value": ".75rem",
+      "category": "radii",
+      "originalValue": "{!BORDER_RADIUS_MD}",
+      "name": "BORDER_RADIUS_MD"
+    },
     "BORDER_RADIUS_PILL": {
       "type": "size",
       "value": "1.125rem",
@@ -589,9 +599,9 @@
     },
     "BUTTON_BORDER_RADIUS": {
       "category": "buttons",
-      "value": ".25rem",
+      "value": ".375rem",
       "type": "size",
-      "originalValue": "{!BORDER_RADIUS_XS}",
+      "originalValue": "{!BORDER_RADIUS_SM}",
       "name": "BUTTON_BORDER_RADIUS"
     },
     "BUTTON_BOX_SHADOW": {
@@ -2159,13 +2169,6 @@
       "originalValue": "{!SKY_GRAY_TINT_02}",
       "name": "INPUT_PLACEHOLDER_COLOR"
     },
-    "INPUT_PLACEHOLDER_FONT_STYLE": {
-      "category": "forms",
-      "value": "italic",
-      "type": "font-syle",
-      "originalValue": "italic",
-      "name": "INPUT_PLACEHOLDER_FONT_STYLE"
-    },
     "LABEL_COLOR": {
       "category": "forms",
       "value": "rgb(17, 18, 54)",
@@ -3058,6 +3061,7 @@
     "BANNER_ALERT_PRIMARY_COLOR",
     "BANNER_ALERT_SUCCESS_COLOR",
     "BANNER_ALERT_WARN_COLOR",
+    "BORDER_RADIUS_MD",
     "BORDER_RADIUS_PILL",
     "BORDER_RADIUS_PILL_LG",
     "BORDER_RADIUS_SM",
@@ -3305,7 +3309,6 @@
     "INPUT_PADDING_X",
     "INPUT_PADDING_Y",
     "INPUT_PLACEHOLDER_COLOR",
-    "INPUT_PLACEHOLDER_FONT_STYLE",
     "LABEL_COLOR",
     "LABEL_DISABLED_COLOR",
     "LABEL_FONT_SIZE",

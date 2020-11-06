@@ -62,6 +62,8 @@ $bpk-banner-alert-success-color: rgb(0, 166, 152) !default;
 /// @group notifications
 $bpk-banner-alert-warn-color: rgb(255, 181, 77) !default;
 /// @group radii
+$bpk-border-radius-md: .75rem !default;
+/// @group radii
 $bpk-border-radius-pill: 1.125rem !default;
 /// @group radii
 $bpk-border-radius-pill-lg: 1.3125rem !default;
@@ -108,7 +110,7 @@ $bpk-button-active-color: rgb(255, 255, 255) !default;
 /// @group buttons
 $bpk-button-background-color: rgb(0, 166, 152) !default;
 /// @group buttons
-$bpk-button-border-radius: .25rem !default;
+$bpk-button-border-radius: .375rem !default;
 /// @group buttons
 $bpk-button-box-shadow: none !default;
 /// @group buttons
@@ -555,8 +557,6 @@ $bpk-input-padding-x: .75rem !default;
 $bpk-input-padding-y: .375rem !default;
 /// @group forms
 $bpk-input-placeholder-color: rgb(104, 105, 127) !default;
-/// @group forms
-$bpk-input-placeholder-font-style: italic !default;
 /// @group forms
 $bpk-label-color: rgb(17, 18, 54) !default;
 /// @group forms
