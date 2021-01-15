@@ -1,6 +1,6 @@
 {
   "name": "bpk-react-utils",
-  "version": "3.0.7",
+  "version": "3.0.11",
   "description": "Utilities for Backpack's React components.",
   "license": "Apache-2.0",
   "repository": {
@@ -12,7 +12,7 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "gitHead": "136d3706ec2f6823e38a2b1e25715b1a280890b5",
+  "gitHead": "09fc99e4e67a5b71dc15f41a5409ad412bc139d4",
   "dependencies": {
     "object-assign": "^4.1.1",
     "prop-types": "^15.6.2",

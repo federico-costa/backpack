@@ -1,7 +1,7 @@
 /*
  * Backpack - Skyscanner's Design System
  *
- * Copyright 2016-2020 Skyscanner Ltd
+ * Copyright 2016-2021 Skyscanner Ltd
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,9 +25,10 @@ import BpkDismissibleChip, {
   type Props as DismissibleProps,
 } from './src/BpkDismissibleChip';
 import { CHIP_TYPES } from './src/commonTypes';
+import themeAttributes from './src/themeAttributes';
 
 export type BpkSelectableChipProps = SelectableProps;
 export type BpkDismissibleChipProps = DismissibleProps;
 
 export default BpkSelectableChip;
-export { BpkDismissibleChip, CHIP_TYPES };
+export { BpkDismissibleChip, CHIP_TYPES, themeAttributes };

@@ -1,7 +1,7 @@
 /*
  * Backpack - Skyscanner's Design System
  *
- * Copyright 2016-2020 Skyscanner Ltd
+ * Copyright 2016-2021 Skyscanner Ltd
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,10 @@ const BpkNavigationBar = (props: Props) => {
     ...rest
   } = props;
 
-  const titleId = `${id}-bpk-navigation-bar-title`;
+  // If the title is a component that sets its own id we want the aria-labelledby on the nav to match this so it can find the element
+  // Otherwise if its just a string we set the id on the title component.
+  const titleId =
+    typeof title === 'string' ? `${id}-bpk-navigation-bar-title` : id;
 
   return (
     // $FlowFixMe[cannot-spread-inexact] - inexact rest. See 'decisions/flowfixme.md'.

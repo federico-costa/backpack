@@ -1,7 +1,7 @@
 /*
  * Backpack - Skyscanner's Design System
  *
- * Copyright 2016-2020 Skyscanner Ltd
+ * Copyright 2016-2021 Skyscanner Ltd
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,10 @@ const https = require('https');
 
 const colors = require('colors');
 const cliProgress = require('cli-progress');
+
+// People who've left but we can't remove them because npm won't let us
+// because they were the original publishers of some packages.
+const DEARLY_DEPARTED = ['mattface', 'tiagohngl'];
 
 // TODO remove this warning once NPM is more reliable or we move to
 // scoped packages and don't need the check at all.
@@ -96,7 +100,7 @@ const verifyMaintainers = data => {
   }
 
   const sortedMaintainers = data.maintainers
-    .filter(m => m !== 'mattface')
+    .filter(m => !DEARLY_DEPARTED.includes(m))
     .sort();
 
   if (sortedMaintainers.join('') === owners.join('')) {

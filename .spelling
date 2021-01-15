@@ -247,15 +247,16 @@ TouchableHighlight
 ViewPropTypes
 
 # Custom prop types
+ALERT_TYPES
 accessibilityLabel
 accessoryView
-appearActiveClassName
-appearClassName
-ALERT_TYPES
 alignToButton
 animateOnEnter
 animateOnLeave
 animationDuration
+appearActiveClassName
+appearClassName
+aspectRatio
 bannerStyle
 BarChart
 beforeClose
@@ -570,6 +571,8 @@ yAxisDomain
 withAccordionItemState
 weekDayKey
 nameAbbr
+sortBy
+sortDirection
 
 BpkAccordion
 BpkAccordionItem
@@ -612,6 +615,7 @@ xxxxxl
 
 bpk-animate-height
 bpk-component-accordion
+bpk-component-aria-live
 bpk-component-autosuggest
 bpk-component-badge
 bpk-component-banner-alert
@@ -673,6 +677,7 @@ bpk-component-rtl-toggle
 bpk-component-scrollable-calendar
 bpk-component-section-list
 bpk-component-select
+bpk-component-skip-link
 bpk-component-slider
 bpk-component-spinner
 bpk-component-star-rating
@@ -810,3 +815,4 @@ semver.org
 ROUNDING_TYPES
 ROUNDING_TYPES.down
 onOpenChange
+politenessSetting

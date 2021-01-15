@@ -1,7 +1,7 @@
 /*
  * Backpack - Skyscanner's Design System
  *
- * Copyright 2016-2020 Skyscanner Ltd
+ * Copyright 2016-2021 Skyscanner Ltd
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,17 +19,19 @@
 
 import React, { type Node, Component } from 'react';
 import PropTypes from 'prop-types';
-import { cssModules } from 'bpk-react-utils';
+import { cssModules, deprecated } from 'bpk-react-utils';
 import { BpkSpinner } from 'bpk-component-spinner';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import { animations } from 'bpk-tokens/tokens/base.es6';
 
+import { widthHeightAspectRatioPropType } from './customPropTypes';
 import STYLES from './BpkBackgroundImage.scss';
 
 const getClassName = cssModules(STYLES);
 
-type BpkBackgroundImageProps = {
+export type BpkBackgroundImageProps = {
   children: Node,
+  aspectRatio: number,
   height: number,
   inView: boolean,
   loading: boolean,
@@ -46,11 +48,40 @@ type BpkBackgroundImageProps = {
 class BpkBackgroundImage extends Component<BpkBackgroundImageProps> {
   trackImg: ?Image;
 
-  onBackgroundImageLoad: () => mixed;
-
   startImageLoad: () => mixed;
 
-  static defaultProps: {};
+  onBackgroundImageLoad: () => mixed;
+
+  static propTypes = {
+    aspectRatio: widthHeightAspectRatioPropType,
+    height: deprecated(
+      widthHeightAspectRatioPropType,
+      'Use "aspectRatio" instead of "width" and "height".',
+    ),
+    width: deprecated(
+      widthHeightAspectRatioPropType,
+      'Use "aspectRatio" instead of "width" and "height".',
+    ),
+    src: PropTypes.string.isRequired,
+    className: PropTypes.string,
+    inView: PropTypes.bool,
+    loading: PropTypes.bool,
+    onLoad: PropTypes.func,
+    style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    imageStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  };
+
+  static defaultProps = {
+    width: null,
+    height: null,
+    aspectRatio: null,
+    className: null,
+    inView: true,
+    loading: false,
+    onLoad: null,
+    style: {},
+    imageStyle: {},
+  };
 
   constructor(props: BpkBackgroundImageProps) {
     super(props);
@@ -86,6 +117,7 @@ class BpkBackgroundImage extends Component<BpkBackgroundImageProps> {
     const {
       width,
       height,
+      aspectRatio,
       children,
       className,
       inView,
@@ -95,8 +127,9 @@ class BpkBackgroundImage extends Component<BpkBackgroundImageProps> {
       style,
     } = this.props;
 
-    const aspectRatio = width / height;
-    const aspectRatioPc = `${100 / aspectRatio}%`;
+    const calculatedAspectRatio =
+      aspectRatio !== null ? aspectRatio : width / height;
+    const aspectRatioPc = `${100 / calculatedAspectRatio}%`;
 
     const classNames = [getClassName('bpk-background-image')];
     const imageClassNames = [getClassName('bpk-background-image__img')];
@@ -156,26 +189,5 @@ class BpkBackgroundImage extends Component<BpkBackgroundImageProps> {
     );
   }
 }
-
-BpkBackgroundImage.propTypes = {
-  height: PropTypes.number.isRequired,
-  src: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired,
-  className: PropTypes.string,
-  inView: PropTypes.bool,
-  loading: PropTypes.bool,
-  onLoad: PropTypes.func,
-  style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-  imageStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-};
-
-BpkBackgroundImage.defaultProps = {
-  className: null,
-  inView: true,
-  loading: false,
-  onLoad: null,
-  style: {},
-  imageStyle: {},
-};
 
 export default BpkBackgroundImage;

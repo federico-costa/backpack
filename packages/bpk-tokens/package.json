@@ -1,6 +1,6 @@
 {
   "name": "bpk-tokens",
-  "version": "36.0.1",
+  "version": "36.1.0",
   "description": "Backpack design tokens for colors, spacing, font, etc.",
   "license": "Apache-2.0",
   "repository": {
@@ -15,7 +15,7 @@
   "scripts": {
     "tokens": "gulp"
   },
-  "gitHead": "a6910b1b5068590c7ba3691bedeb5818160cc477",
+  "gitHead": "09fc99e4e67a5b71dc15f41a5409ad412bc139d4",
   "dependencies": {
     "color": "^3.0.0"
   }

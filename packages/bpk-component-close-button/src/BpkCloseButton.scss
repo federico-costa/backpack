@@ -1,7 +1,7 @@
 /*
  * Backpack - Skyscanner's Design System
  *
- * Copyright 2016-2020 Skyscanner Ltd
+ * Copyright 2016-2021 Skyscanner Ltd
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,15 @@
 
 @import '~bpk-mixins';
 
+$button-padding: $bpk-spacing-xs / 2;
+
 .bpk-close-button {
+  width: $bpk-spacing-base;
   height: $bpk-spacing-base;
+  // The margin here is used to ensure that the icon is aligned to
+  // the leading or trailing edge of its parent container
+  margin-right: -#{$button-padding};
+  margin-left: -#{$button-padding};
   padding: 0;
   border: 0;
   background-color: transparent;
@@ -38,7 +45,7 @@
   }
 
   &__icon {
-    vertical-align: -#{$bpk-spacing-xs / 2};
+    vertical-align: -#{$button-padding};
     fill: currentColor;
   }
 }

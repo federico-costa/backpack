@@ -1,7 +1,7 @@
 /*
  * Backpack - Skyscanner's Design System
  *
- * Copyright 2016-2020 Skyscanner Ltd
+ * Copyright 2016-2021 Skyscanner Ltd
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -107,6 +107,21 @@ const generateTheme = ({
   buttonDestructiveHoverBackgroundColor: colorWhite,
   buttonDestructiveActiveBackgroundColor: colorWhite,
 
+  chipPrimarySelectedBackgroundColor: primaryColor500,
+  chipPrimarySelectedHoverBackgroundColor: primaryColor600,
+  chipPrimarySelectedActiveBackgroundColor: primaryColor700,
+  chipPrimarySelectedTextColor: colorWhite,
+
+  chipSuccessSelectedBackgroundColor: secondaryColor500,
+  chipSuccessSelectedHoverBackgroundColor: secondaryColor600,
+  chipSuccessSelectedActiveBackgroundColor: secondaryColor700,
+  chipSuccessSelectedTextColor: colorWhite,
+
+  chipLightSelectedBackgroundColor: primaryColor500,
+  chipLightSelectedHoverBackgroundColor: primaryColor600,
+  chipLightSelectedActiveBackgroundColor: primaryColor700,
+  chipLightSelectedTextColor: colorWhite,
+
   fieldsetLabelTextColor: secondaryColor500,
 
   formValidationIconFill: secondaryColor500,
@@ -181,6 +196,8 @@ const generateTheme = ({
   priceMarkerViewedBackgroundColor: primaryColor300,
   priceMarkerViewedBorderColor: primaryColor300,
   priceMarkerViewedColor: colorWhite,
+
+  skipLinkBackgroundColor: secondaryColor500,
 
   navigationBarIconButtonColor: colorWhite,
   navigationBarIconButtonHoverColor: colorWhite,

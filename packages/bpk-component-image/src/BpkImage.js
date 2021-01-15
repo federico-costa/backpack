@@ -1,7 +1,7 @@
 /*
  * Backpack - Skyscanner's Design System
  *
- * Copyright 2016-2020 Skyscanner Ltd
+ * Copyright 2016-2021 Skyscanner Ltd
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,29 +19,16 @@
 
 import React, { type Node, Component } from 'react';
 import PropTypes from 'prop-types';
-import { cssModules } from 'bpk-react-utils';
+import { cssModules, deprecated } from 'bpk-react-utils';
 import { BpkSpinner } from 'bpk-component-spinner';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import { animations } from 'bpk-tokens/tokens/base.es6';
 
+import { widthHeightAspectRatioPropType } from './customPropTypes';
 import STYLES from './BpkImage.scss';
 import BORDER_RADIUS_STYLES from './BpkImageBorderRadiusStyles';
 
 const getClassName = cssModules(STYLES);
-
-type BpkImageProps = {
-  altText: string,
-  height: number,
-  inView: boolean,
-  loading: boolean,
-  src: string,
-  width: number,
-  borderRadiusStyle: $Keys<typeof BORDER_RADIUS_STYLES>,
-  className: ?string,
-  onLoad: ?() => mixed,
-  style: ?{},
-  suppressHydrationWarning: boolean,
-};
 
 type ImageProps = {
   altText: string,
@@ -101,12 +88,59 @@ class Image extends Component<ImageProps> {
   }
 }
 
+type BpkImageProps = {
+  altText: string,
+  aspectRatio: ?number,
+  height: ?number,
+  inView: boolean,
+  loading: boolean,
+  src: string,
+  width: ?number,
+  borderRadiusStyle: $Keys<typeof BORDER_RADIUS_STYLES>,
+  className: ?string,
+  onLoad: ?() => mixed,
+  style: ?{},
+  suppressHydrationWarning: boolean,
+};
+
 class BpkImage extends Component<BpkImageProps> {
   onImageLoad: () => mixed;
 
   placeholder: ?HTMLElement;
 
-  static defaultProps: {};
+  static propTypes = {
+    altText: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    aspectRatio: widthHeightAspectRatioPropType,
+    borderRadiusStyle: PropTypes.oneOf(Object.keys(BORDER_RADIUS_STYLES)),
+    className: PropTypes.string,
+    inView: PropTypes.bool,
+    loading: PropTypes.bool,
+    onLoad: PropTypes.func,
+    style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    suppressHydrationWarning: PropTypes.bool,
+    height: deprecated(
+      widthHeightAspectRatioPropType,
+      'Use "aspectRatio" instead of "width" and "height".',
+    ),
+    width: deprecated(
+      widthHeightAspectRatioPropType,
+      'Use "aspectRatio" instead of "width" and "height".',
+    ),
+  };
+
+  static defaultProps = {
+    aspectRatio: null,
+    borderRadiusStyle: BORDER_RADIUS_STYLES.none,
+    className: null,
+    height: null,
+    inView: true,
+    loading: false,
+    onLoad: null,
+    style: {},
+    suppressHydrationWarning: false,
+    width: null,
+  };
 
   onImageLoad = (): void => {
     if (this.props.onLoad) {
@@ -114,10 +148,21 @@ class BpkImage extends Component<BpkImageProps> {
     }
   };
 
+  getAspectRatio = () => {
+    if (this.props.aspectRatio) {
+      return this.props.aspectRatio;
+    }
+    if (this.props.width && this.props.height) {
+      return this.props.width / this.props.height;
+    }
+    return 1;
+  };
+
   render(): Node {
     const {
       width,
       height,
+      aspectRatio,
       altText,
       borderRadiusStyle,
       className,
@@ -130,8 +175,7 @@ class BpkImage extends Component<BpkImageProps> {
 
     const classNames = [getClassName('bpk-image')];
 
-    const aspectRatio = width / height;
-    const aspectRatioPc = `${100 / aspectRatio}%`;
+    const aspectRatioPercentage = `${100 / this.getAspectRatio()}%`;
 
     if (!loading) {
       classNames.push(getClassName('bpk-image--no-background'));
@@ -154,7 +198,7 @@ class BpkImage extends Component<BpkImageProps> {
           ref={div => {
             this.placeholder = div;
           }}
-          style={{ height: 0, paddingBottom: aspectRatioPc }}
+          style={{ height: 0, paddingBottom: aspectRatioPercentage }}
           className={classNames.join(' ')}
           suppressHydrationWarning={this.props.suppressHydrationWarning}
         >
@@ -204,29 +248,5 @@ class BpkImage extends Component<BpkImageProps> {
     );
   }
 }
-
-BpkImage.propTypes = {
-  altText: PropTypes.string.isRequired,
-  height: PropTypes.number.isRequired,
-  src: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired,
-  borderRadiusStyle: PropTypes.oneOf(Object.keys(BORDER_RADIUS_STYLES)),
-  className: PropTypes.string,
-  inView: PropTypes.bool,
-  loading: PropTypes.bool,
-  onLoad: PropTypes.func,
-  style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-  suppressHydrationWarning: PropTypes.bool,
-};
-
-BpkImage.defaultProps = {
-  borderRadiusStyle: BORDER_RADIUS_STYLES.none,
-  className: null,
-  inView: true,
-  loading: false,
-  onLoad: null,
-  style: {},
-  suppressHydrationWarning: false,
-};
 
 export default BpkImage;

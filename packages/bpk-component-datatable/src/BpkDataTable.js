@@ -1,7 +1,7 @@
 /*
  * Backpack - Skyscanner's Design System
  *
- * Copyright 2016-2020 Skyscanner Ltd
+ * Copyright 2016-2021 Skyscanner Ltd
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,126 +15,95 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/* @flow strict */
 
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { Table, AutoSizer, SortDirection } from 'react-virtualized';
+import { Table, AutoSizer } from 'react-virtualized';
 import { cssModules } from 'bpk-react-utils';
-import _sortBy from 'lodash/sortBy';
 import _omit from 'lodash/omit';
 
 import STYLES from './BpkDataTable.scss';
 import BpkDataTableColumn from './BpkDataTableColumn';
 import hasChildrenOfType from './hasChildrenOfType';
-import { getSortIconDirection } from './bpkHeaderRenderer';
+import makeSorter, { type Sorter } from './sorter';
+import type { Props } from './common-types';
 
 const getClassName = cssModules(STYLES);
-const omittedTableProps = [
-  'rowGetter',
-  'rowCount',
-  'sortBy',
-  'sortDirection',
-  'sort',
-  'onHeaderClick',
-];
+const omittedTableProps = ['rowGetter', 'rowCount', 'onHeaderClick'];
 
-const getSortDirection = (
-  state,
-  newSortBy,
-  newSortDirection,
-  defaultSortDirection,
-) => {
-  const { sortBy, sortDirection } = state;
-  if (newSortDirection !== null) {
-    return newSortDirection;
-  }
-  if (sortBy === newSortBy) {
-    return sortDirection === SortDirection.ASC
-      ? SortDirection.DESC
-      : SortDirection.ASC;
-  }
-  return defaultSortDirection;
+type State<Row> = {
+  sorter: Sorter<Row>,
+  rowSelected: ?number,
 };
 
-const sortList = ({ sortBy, sortDirection, list }) => {
-  const sorted = _sortBy(list, sortBy);
-  if (sortDirection === 'DESC') {
-    sorted.reverse();
-  }
-  return sorted;
-};
+class BpkDataTable<Row> extends Component<Props<Row>, State<Row>> {
+  static defaultProps = {
+    ...Table.defaultProps,
+    width: null,
+    headerHeight: 60,
+    rowHeight: 60,
+    gridStyle: { direction: undefined }, // This is required for rows to automatically respect rtl
+    defaultColumnSortIndex: 0,
+    sort: null,
+    sortBy: null,
+    sortDirection: null,
+  };
 
-class BpkDataTable extends Component {
-  constructor({ rows, children, defaultColumnSortIndex }) {
+  constructor(props: Props<Row>) {
     super();
 
-    const sortBy =
-      children.length > 0
-        ? children[defaultColumnSortIndex].props.dataKey
-        : undefined;
-    const sortDirection =
-      children[defaultColumnSortIndex].props.defaultSortDirection ||
-      SortDirection.ASC;
-    const sortedList = sortList({ sortBy, sortDirection, list: rows });
-
     this.state = {
-      sortedList,
-      sortBy,
-      sortDirection,
+      sorter: makeSorter(props),
       rowSelected: undefined,
     };
   }
 
-  UNSAFE_componentWillReceiveProps({ rows }) {
-    if (rows !== this.props.rows) {
-      const { sortBy, sortDirection } = this.state;
-      const sortedList = sortList({ sortBy, sortDirection, list: rows });
-      this.setState({ sortedList, rowSelected: undefined });
+  UNSAFE_componentWillReceiveProps(nextProps: Props<Row>) {
+    if (nextProps.rows !== this.props.rows) {
+      this.state.sorter.propsChange(nextProps);
     }
   }
 
-  onRowClicked = ({ index }) => {
+  onRowClicked = ({ index }: { index: number }) => {
     if (this.state.rowSelected === index) {
       this.setState({ rowSelected: undefined });
     } else {
       this.setState({ rowSelected: index });
     }
     if (this.props.onRowClick !== undefined) {
-      this.props.onRowClick(this.state.sortedList[index]);
+      this.props.onRowClick(this.state.sorter.getRow(index));
     }
   };
 
-  onHeaderClick = ({ dataKey: sortBy, event }) => {
-    const column = this.props.children.find(
+  onHeaderClick = ({
+    dataKey: sortBy,
+    event,
+  }: {
+    dataKey: string,
+    event: SyntheticEvent<HTMLDivElement>,
+  }) => {
+    const column = React.Children.toArray(this.props.children).find(
       child => child.props.dataKey === sortBy,
     );
+
+    if (!column) {
+      return;
+    }
 
     if (column.props.disableSort === true) {
       return;
     }
 
     // See: https://reactjs.org/docs/events.html#event-pooling
-    const eventTarget = event.target;
+    const eventTarget = event.currentTarget;
 
-    this.setState(prevState => {
-      const sortDirection = getSortDirection(
-        prevState,
-        sortBy,
-        getSortIconDirection(eventTarget),
-        column.props.defaultSortDirection || SortDirection.ASC,
-      );
-
-      const sortedList = sortList({
-        sortBy,
-        sortDirection,
-        list: this.props.rows,
-      });
-
-      return { sortBy, sortDirection, sortedList };
-    });
+    this.setState(prevState => ({
+      sorter: prevState.sorter.onHeaderClick(sortBy, eventTarget, column),
+    }));
   };
 
-  rowClassName = ({ index }) => {
+  rowClassName = (consumerClassName: ?string, { index }: { index: number }) => {
     const classNames = [getClassName('bpk-data-table__row')];
     if (this.state.rowSelected === index) {
       classNames.push(getClassName('bpk-data-table__row--selected'));
@@ -145,13 +114,21 @@ class BpkDataTable extends Component {
     if (index === -1) {
       classNames.push(getClassName('bpk-data-table__header-row'));
     }
+    if (consumerClassName) {
+      classNames.push(consumerClassName);
+    }
     return classNames;
   };
 
-  renderTable(width) {
-    const { sortedList, sortDirection, sortBy } = this.state;
-
-    const { children, className, headerClassName, ...restOfProps } = this.props;
+  renderTable(width: ?number) {
+    const {
+      children,
+      className,
+      headerClassName,
+      rowClassName,
+      sort,
+      ...restOfProps
+    } = this.props;
 
     const classNames = [getClassName('bpk-data-table')];
     if (className) {
@@ -164,20 +141,20 @@ class BpkDataTable extends Component {
     }
 
     return (
+      // $FlowFixMe[cannot-spread-inexact]
       <Table
         {...restOfProps}
         className={classNames.join(' ')}
         width={width}
-        rowCount={sortedList.length}
-        rowGetter={({ index }) => sortedList[index]}
+        rowCount={this.state.sorter.rowCount}
+        rowGetter={({ index }) => this.state.sorter.getRow(index)}
         headerClassName={headerClassNames.join(' ')}
-        rowClassName={this.rowClassName}
+        rowClassName={row => this.rowClassName(rowClassName, row)}
         onRowClick={this.onRowClicked}
         onHeaderClick={this.onHeaderClick}
-        sortBy={sortBy}
-        sortDirection={sortDirection}
+        {...this.state.sorter.sortProps}
       >
-        {children.map(BpkDataTableColumn.toColumn)}
+        {React.Children.map(children, BpkDataTableColumn.toColumn)}
       </Table>
     );
   }
@@ -203,15 +180,9 @@ BpkDataTable.propTypes = {
   headerHeight: PropTypes.number,
   className: PropTypes.string,
   defaultColumnSortIndex: PropTypes.number,
-};
-
-BpkDataTable.defaultProps = {
-  ...Table.defaultProps,
-  width: null,
-  headerHeight: 60,
-  rowHeight: 60,
-  gridStyle: { direction: undefined }, // This is required for rows to automatically respect rtl
-  defaultColumnSortIndex: 0,
+  sort: PropTypes.func,
+  sortBy: PropTypes.string,
+  sortDirection: PropTypes.oneOf('ASC', 'DESC'),
 };
 
 export default BpkDataTable;

@@ -1,14 +1,6 @@
 # Unreleased
 
 > Place your changes below this line.
-**Added:**
- - bpk-component-button:
-   - `BpkButtonLink` now has a `padded` prop (false by default) which increases the tappable/clickable area around link style buttons to make them easier to interact with. Enabling this will improve accessibility and SEO.
-
-**Fixed:**
-
- - bpk-component-nudger:
-   - Fixed use of internal props that generated console warnings due to their unneeded usage
 
 ## How to write a good changelog entry
 
@@ -24,16 +16,16 @@ See [`CHANGELOG.md`](CHANGELOG.md) for real-world examples of good changelog ent
 
 **Breaking:**
 
- - bpk-svgs:
-   - Replaced `charmeleon` icon with new `charizard` icon. To upgrade, replace your references to `charmeleon` with `charizard`.
-   - Upgraded `fire` dependency to `3.0.0`.
+- bpk-svgs:
+  - Replaced `charmeleon` icon with new `charizard` icon. To upgrade, replace your references to `charmeleon` with `charizard`.
+  - Upgraded `fire` dependency to `3.0.0`.
 
 **Added:**
 
- - bpk-component-infinity-gauntlet:
-   - New `timeStone` prop for controlling time. See &lt;link to docs site&gt;.
+- bpk-component-infinity-gauntlet:
+  - New `timeStone` prop for controlling time. See &lt;link to docs site&gt;.
 
 **Fixed:**
 
- - bpk-component-horcrux:
-   - Fixed issue where `BpkHorcrux` would occasionally possess the living.
+- bpk-component-horcrux:
+  - Fixed issue where `BpkHorcrux` would occasionally possess the living.

@@ -1,7 +1,7 @@
 /*
  * Backpack - Skyscanner's Design System
  *
- * Copyright 2016-2020 Skyscanner Ltd
+ * Copyright 2016-2021 Skyscanner Ltd
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -198,6 +198,14 @@ storiesOf('bpk-component-modal', module)
       This is a default modal. You can put anything you want in here.
     </ModalContainer>
   ))
+  .add('Long title', () => (
+    <ModalContainer
+      title="We have to remember what's important in life: friends, waffles, and work. Or waffles, friends, work. But work has to come third."
+      closeText="Done"
+    >
+      This is a default modal. You can put anything you want in here.
+    </ModalContainer>
+  ))
   .add('Not full screen on mobile', () => (
     <ModalContainer
       title="Modal title"
@@ -222,7 +230,7 @@ storiesOf('bpk-component-modal', module)
       This is a full-screen modal. You can put anything you want in here,
       including other modals!
       <ModalContainer
-        title="Modal title"
+        title="Inner modal title"
         closeLabel="Close modal"
         wrapperProps={{ id: 'inner-modal-container' }}
         buttonLabel="Open another modal from this modal"

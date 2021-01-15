@@ -1,7 +1,7 @@
 /*
  * Backpack - Skyscanner's Design System
  *
- * Copyright 2016-2020 Skyscanner Ltd
+ * Copyright 2016-2021 Skyscanner Ltd
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,7 +55,15 @@ export default function withLazyLoading(
 
     supportsPassiveEvents: () => boolean;
 
-    static defaultProps: {};
+    static propTypes = {
+      style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+      className: PropTypes.string,
+    };
+
+    static defaultProps = {
+      style: null,
+      className: null,
+    };
 
     constructor(): void {
       super();
@@ -168,16 +176,6 @@ export default function withLazyLoading(
     }
   }
   WithLazyLoading.displayName = wrapDisplayName(Component, 'withLazyLoading');
-
-  WithLazyLoading.propTypes = {
-    style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-    className: PropTypes.string,
-  };
-
-  WithLazyLoading.defaultProps = {
-    style: null,
-    className: null,
-  };
 
   return WithLazyLoading;
 }

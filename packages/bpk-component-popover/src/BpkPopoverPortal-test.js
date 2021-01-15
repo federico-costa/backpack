@@ -1,7 +1,7 @@
 /*
  * Backpack - Skyscanner's Design System
  *
- * Copyright 2016-2020 Skyscanner Ltd
+ * Copyright 2016-2021 Skyscanner Ltd
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -136,7 +136,9 @@ describe('BpkPopoverPortal', () => {
 
   it('should trap and restore focus', () => {
     const focusStore = require('a11y-focus-store'); // eslint-disable-line global-require
-    const focusScope = require('a11y-focus-scope'); // eslint-disable-line global-require
+    const keyboardFocusScope = require('./keyboardFocusScope').default; // eslint-disable-line global-require
+    keyboardFocusScope.scopeFocus = jest.fn();
+    keyboardFocusScope.unscopeFocus = jest.fn();
 
     const portal = mount(
       <BpkPopoverPortal
@@ -153,19 +155,19 @@ describe('BpkPopoverPortal', () => {
 
     expect(portal.instance().popper).toBeNull();
     expect(focusStore.storeFocus).not.toHaveBeenCalled();
-    expect(focusScope.scopeFocus).not.toHaveBeenCalled();
+    expect(keyboardFocusScope.scopeFocus).not.toHaveBeenCalled();
     expect(focusStore.restoreFocus).not.toHaveBeenCalled();
-    expect(focusScope.unscopeFocus).not.toHaveBeenCalled();
+    expect(keyboardFocusScope.unscopeFocus).not.toHaveBeenCalled();
 
     portal.setProps({ isOpen: true }).update();
 
     expect(focusStore.storeFocus).toHaveBeenCalled();
-    expect(focusScope.scopeFocus).toHaveBeenCalled();
+    expect(keyboardFocusScope.scopeFocus).toHaveBeenCalled();
 
     portal.setProps({ isOpen: false }).update();
 
     expect(focusStore.restoreFocus).toHaveBeenCalled();
-    expect(focusScope.unscopeFocus).toHaveBeenCalled();
+    expect(keyboardFocusScope.unscopeFocus).toHaveBeenCalled();
   });
 
   it('should reposition when props are updated', () => {

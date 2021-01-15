@@ -2,6 +2,139 @@
 
 [Unreleased changes](./UNRELEASED.md).
 
+# 2021-01-14
+
+**Breaking:**
+
+- bpk-component-autosuggest: 4.1.29 => 5.0.0
+  - Downgraded `react-autosuggest` to `v9.4.3` to ensure compatibility with older versions of React.
+
+**Added:**
+- bpk-component-datatable: 2.0.58 => 2.1.0
+  - Passing `sort`, `sortBy` and `sortDirection` as props leaves all the sorting to the underlying react-virtualized Table.
+  - Added flow types.
+
+# 2021-01-13
+
+**Added:**
+
+- bpk-svgs: 12.2.6 => 12.3.0
+- bpk-tokens: 36.0.4 => 36.1.0
+  - Added new semantic tokens for web for `Background`, `Text` and `Line`.
+
+# 2021-01-08
+
+**Fixed:**
+ - bpk-component-datatable: 2.0.56 => 2.0.57
+   - Fixed arrow icons in column header sorting that were inverted
+
+# 2020-12-17
+
+**Fixed:**
+- bpk-component-popover: 3.0.100 => 3.0.101
+  - Fixed an issue that prevented using a mouse click (or tap) to focus on an element outside the popover.
+
+**Fixed:**
+- bpk-component-image: 4.3.7 => 4.3.8
+  - Fixed clash between component `defaultProps` and `defaultProps` flow-type.
+
+# 2020-12-11
+
+**Fixed:**
+ - bpk-component-close-button:
+   - Fixed the size of focus indicators in Chrome so that they don't touch the close icon.
+
+# 2020-12-10
+
+**Added:**
+ - bpk-component-skip-link:
+   - New skip-link component that helps screen-reader users and keyboard-only users navigate faster.
+# 2020-12-04
+
+**Fixed:**
+ - bpk-component-icon: 8.3.0 => 8.3.1
+ - bpk-svgs: 12.2.0 => 12.2.1
+   - `price-tag` icon fixed to be centered and correct size.
+
+# 2020-12-03
+
+**Added:**
+ - bpk-component-icon: 8.2.30 => 8.3.0
+ - bpk-svgs: 12.1.18 => 12.2.0
+   - New `price-tag` icon.
+
+# 2020-12-02
+
+**Fixed:**
+ - bpk-component-datatable: 2.0.48 => 2.0.49
+   - `rowClassName` will now be applied to the row properly.
+- bpk-component-checkbox: 2.2.20 => 2.2.21
+  - Fixed an issue where checked checkboxes didn't always display the check.
+
+# 2020-12-02
+
+**Fixed:**
+- bpk-component-datatable: 2.0.47 => 2.0.48
+  - The column heading label no longer has `white-space: nowrap;` so it should wrap properly when the title label is too long for the column.
+# 2020-11-26
+
+**Added:**
+- bpk-component-image: 4.2.0 => 4.3.0
+  - Flow types are now exported from `bpk-component-image`.
+
+# 2020-11-24
+
+ - bpk-component-aria-live: `1.0.0`
+   - Added a new `BpkAriaLive` component to simplify adding `aria-live` regions to pages.
+
+ - bpk-component-image: `4.1.1 => 4.2.0`
+   - Export `BpkBackgroundImageProps` prop from`BpkBackgroundImage` component and `bpk-component-image` package.
+
+# 2020-11-18
+
+**Fixed:**
+- bpk-component-modal: 2.1.92 => 2.1.93
+  - Fixed an a11y issue where if the title wasn't supplied `aria-labelledby` would try to attach to a non-existing component and the naming of the title passed to the navigation component didn't match.
+
+- bpk-component-navigation-bar: 2.2.52 => 2.2.53
+  - Fixed the `id` generation for when a title component is passed vs. a string, so that the `aria-labelledby` matches the id of the title.
+
+# 2020-11-18
+
+**Fixed:**
+
+- bpk-component-modal:
+  - Fixed an issue where long titles could overlap the close button.
+
+# 2020-11-17
+
+**Added:**
+
+ - bpk-component-image: 4.0.48 => 4.1.0
+   - New `aspectRatio` prop for specifying the relative width and height of the src image.
+   - This prop replaces the existing `width` and `height` props which will be removed in a later breaking release.
+
+# 2020-11-12
+
+**Added:**
+
+ - bpk-component-chip: 4.0.19 => 4.1.0
+   - Added theming support. Please refer to the [readme](https://github.com/Skyscanner/backpack/blob/master/packages/bpk-component-chip/README.md) for a complete list of theming properties.
+
+
+# 2020-11-09
+
+**Fixed:**
+
+ - bpk-component-nudger: 2.0.92 => 2.0.93
+   - Fixed use of internal props that generated console warnings due to their unneeded usage
+
+# 2020-11-04
+
+**Added:**
+ - bpk-component-button: 3.2.67 => 3.3.0
+   - `BpkButtonLink` now has a `padded` prop (false by default) which increases the tappable/clickable area around link style buttons to make them easier to interact with. Enabling this will improve accessibility and SEO.
+
 # 2020-10-27
 
 **Breaking:**

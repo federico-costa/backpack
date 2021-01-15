@@ -32,6 +32,7 @@ import {
 } from '../packages/bpk-component-button';
 import { themeAttributes as calendarThemeAttributes } from '../packages/bpk-component-calendar';
 import { themeAttributes as checkboxThemeAttributes } from '../packages/bpk-component-checkbox';
+import { themeAttributes as chipThemeAttributes } from '../packages/bpk-component-chip';
 import { themeAttributes as datepickerThemeAttributes } from '../packages/bpk-component-datepicker';
 import { themeAttributes as drawerThemeAttributes } from '../packages/bpk-component-drawer';
 import { themeAttributes as fieldsetThemeAttributes } from '../packages/bpk-component-fieldset';
@@ -55,6 +56,7 @@ import { themeAttributes as radioThemeAttributes } from '../packages/bpk-compone
 import { themeAttributes as ratingThemeAttributes } from '../packages/bpk-component-rating';
 import { themeAttributes as selectThemeAttributes } from '../packages/bpk-component-select';
 import { themeAttributes as sliderThemeAttributes } from '../packages/bpk-component-slider';
+import { themeAttributes as skipLinkThemeAttributes } from '../packages/bpk-component-skip-link';
 import { themeAttributes as spinnerThemeAttributes } from '../packages/bpk-component-spinner';
 import { themeAttributes as starRatingThemeAttributes } from '../packages/bpk-component-star-rating';
 import { themeAttributes as switchThemeAttributes } from '../packages/bpk-component-switch';
@@ -76,6 +78,7 @@ export default [
   ...destructiveThemeAttributes,
   ...calendarThemeAttributes,
   ...checkboxThemeAttributes,
+  ...chipThemeAttributes,
   ...datepickerThemeAttributes,
   ...drawerThemeAttributes,
   ...fieldsetThemeAttributes,
@@ -92,6 +95,7 @@ export default [
   ...radioThemeAttributes,
   ...ratingThemeAttributes,
   ...selectThemeAttributes,
+  ...skipLinkThemeAttributes,
   ...sliderThemeAttributes,
   ...spinnerThemeAttributes,
   ...starRatingThemeAttributes,

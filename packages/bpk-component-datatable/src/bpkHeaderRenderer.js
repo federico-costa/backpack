@@ -1,7 +1,7 @@
 /*
  * Backpack - Skyscanner's Design System
  *
- * Copyright 2016-2020 Skyscanner Ltd
+ * Copyright 2016-2021 Skyscanner Ltd
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/* @flow strict */
 
 import React from 'react';
 import { SortDirection } from 'react-virtualized';
@@ -25,6 +26,7 @@ import { withRtlSupport } from 'bpk-component-icon';
 
 import { hasClassName } from './utils';
 import STYLES from './BpkDataTableColumn.scss';
+import { type SortDirectionType, type SortProps } from './sort-types';
 
 const DownIcon = withRtlSupport(BpkSmallArrowDownIcon);
 const UpIcon = withRtlSupport(BpkSmallArrowUpIcon);
@@ -35,23 +37,35 @@ const downIconClassName = getClassName(
   'bpk-data-table-column__sort-icon--down',
 );
 
-export const getSortIconDirection = element => {
+export const getSortIconDirection = (element: Element): ?SortDirectionType => {
   if (
     hasClassName(element, upIconClassName) ||
-    hasClassName(element.parentNode, upIconClassName)
+    hasClassName(element.parentElement, upIconClassName)
   ) {
-    return SortDirection.DESC;
+    return SortDirection.ASC;
   }
   if (
     hasClassName(element, downIconClassName) ||
-    hasClassName(element.parentNode, downIconClassName)
+    hasClassName(element.parentElement, downIconClassName)
   ) {
-    return SortDirection.ASC;
+    return SortDirection.DESC;
   }
   return null;
 };
 
-export default ({ dataKey, label, sortBy, sortDirection, disableSort }) => {
+type Props = {
+  dataKey: string,
+  label: string,
+  disableSort: boolean,
+  ...$Exact<SortProps>,
+};
+export default ({
+  dataKey,
+  label,
+  sortBy,
+  sortDirection,
+  disableSort,
+}: Props) => {
   const children = [
     <span
       className={getClassName('bpk-data-table-column__header')}
@@ -74,7 +88,7 @@ export default ({ dataKey, label, sortBy, sortDirection, disableSort }) => {
     ];
 
     if (sortBy === dataKey) {
-      (sortDirection === SortDirection.DESC
+      (sortDirection === SortDirection.ASC
         ? upIconClassNames
         : downIconClassNames
       ).push(getClassName('bpk-data-table-column__sort-icon--selected'));
